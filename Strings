@@ -1,0 +1,96 @@
+1]
+import java.util.Scanner;
+
+public class Strbasic {
+     public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String greet="Hey there!";
+    System.out.print("Enter your name :");
+    String name=scanner.nextLine();
+    System.out.print(greet+""+name);
+    int length=name.length();
+    System.out.print("\n Length of name="+length);
+    
+            
+}
+}
+
+2]
+import java.util.Scanner;
+
+public class StrCompare {
+    public static void main(String args[])
+    {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter your name :");
+    String name=scanner.nextLine();
+    System.out.print("Enter your password:");
+    String password=scanner.nextLine();
+    System.out.print("Confirm Paasword");
+    String Cnfpassword=scanner.nextLine();
+    
+    boolean isEqual1 = password.equals(Cnfpassword);
+        System.out.println("Password equals  (case-sensitive): " + isEqual1);
+    boolean isEqual2 = password.equalsIgnoreCase(Cnfpassword);
+        System.out.println("Passwords^ equals  (case-insensitive): " + isEqual2);
+
+    
+    
+    }
+    
+}
+
+3]
+import java.util.Scanner;
+public class Strsearch {
+    public static void main(String []args){
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Provide a sentence:");
+        String Sentence=scanner.nextLine();
+        boolean containsornot = Sentence.contains("The");
+        System.out.println("Contains 'The': " + containsornot);
+        
+    
+}
+}
+
+
+4]
+import java.util.Scanner;
+public class strManip {
+    public static void main(String args[])
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first text :");
+        String text=scanner.nextLine();
+        System.out.print("Enter second text :");
+        String text2=scanner.nextLine();
+      
+        int comparisonResult = text.compareTo(text2);
+        if (comparisonResult < 0) {
+            System.out.println("text1 is less than text2.");
+        } else if (comparisonResult > 0) {
+            System.out.println("text1 is greater than text2.");
+        } else {
+            System.out.println("text1 is equal to text2.");
+        }
+    
+}
+}
+
+5]
+import java.util.Scanner;
+public class palindrome {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Enter a text to check palindrome");
+        String s=scanner.nextLine();
+        StringBuilder s1 = new StringBuilder(s);
+        s1.reverse();
+        if (s.equals(s1.toString())) {
+            System.out.println("\"" + s + "\" is a palindrome string.");
+        } else {
+            System.out.println("\"" + s + "\" is not a palindrome string.");
+        }
+    }
+}
