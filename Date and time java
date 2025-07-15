@@ -1,0 +1,92 @@
+
+1]
+import java.util.Date;
+public class getdate {
+    public static void main(String[] args)
+    {
+        Date newdate =new Date();
+        System.out.print(newdate.toString());
+        
+    }
+    
+}
+
+2]
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+
+public class StrToDate {
+    
+    public static void main(String[] args) {
+        
+        System.out.println("String to date");
+        String dateString = "2025-07-15 14:30:00";
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date parsedDate = formatter.parse(dateString);
+            System.out.println("Parsed Date (Old): " + parsedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+3]
+import java.util.Date;
+import java.time.LocalTime;
+
+import java.text.SimpleDateFormat;
+
+
+public class DateToStr {
+    public static void main(String[] args)
+    {
+        Date newdate=new Date();
+        SimpleDateFormat date_format1= new SimpleDateFormat("MM-dd-YYYY");
+        String date_str=date_format1.format(newdate);
+        System.out.print("Date in MM-dd-YYYY format:"+date_str);
+        
+         LocalTime myObj = LocalTime.now();
+         System.out.println("\n"+myObj);
+        SimpleDateFormat date_format2= new SimpleDateFormat("dd MMMM yyyy zzzz");
+        String date_str1=date_format2.format(newdate);
+        System.out.print("\nDate in dd MMMM yyyy zzzz format:"+date_str1);
+    }
+    
+}
+
+4]
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+
+public class TimezoneConverter {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Give timezone of a country:");
+        String sourceZone= scanner.nextLine();
+        System.out.print("Give target country:");
+        String targetZone=scanner.nextLine();
+        
+        try {
+            
+            ZonedDateTime sourceDateTime = ZonedDateTime.now(ZoneId.of(sourceZone));
+            ZonedDateTime targetDateTime = sourceDateTime.withZoneSameInstant(ZoneId.of(targetZone));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm a z");
+
+      
+            System.out.println("\nCurrent Date & Time in " + sourceZone + ": " + sourceDateTime.format(formatter));
+            System.out.println("Converted Date & Time in " + targetZone + ": " + targetDateTime.format(formatter));
+        } catch (Exception e) {
+            System.out.println("Invalid timezone entered. Please check format like 'Asia/Kolkata' or 'Europe/London'.");
+        }
+
+        scanner.close();
+    }
+}
+    
+
