@@ -49,3 +49,273 @@ public class IntergerSum {
     }
 }
     
+3]
+import java.util.LinkedList;
+import java.util.List;
+
+public class basicLinkedList {
+    public static void main(String[] args){
+        List<Integer> numbers =new LinkedList<>();
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(45);
+        numbers.add(1,10);
+        
+        System.out.println("The numbers are:" + numbers);
+        ((LinkedList<Integer>) numbers).removeFirst();
+        ((LinkedList<Integer>) numbers).removeLast();
+        System.out.println("Contains 30? " + numbers.contains(30));
+        numbers.clear();
+        System.out.println("List is empty: " + numbers.isEmpty());
+        
+    }
+    
+    
+}
+
+4]
+
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class listSearch{
+    public static boolean searchnum (List<Integer> list, int target){
+        for(int element:list){
+            if(element==target){
+                return true;
+            }
+}
+                return false;
+            }   
+   public static void main(String[] args){
+       Scanner s=new Scanner(System.in);
+       List<Integer> numbers=new ArrayList<>();
+        System.out.print("Enter how many numbers you want to add: ");
+        int size = s.nextInt();
+
+        System.out.println("Enter " + size + " numbers:");
+        for (int i = 0; i < size; i++) {
+            numbers.add(s.nextInt());
+        }
+
+        System.out.print("Enter the number to search: ");
+        int target = s.nextInt();
+
+        
+        if (searchnum(numbers, target)) {
+            System.out.println(target + " is in the list.");
+        } else {
+            System.out.println(target + " is NOT in the list.");
+        }
+
+        s.close();
+    }
+}
+
+
+5]
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class listSort  {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    ArrayList<String> employees = new ArrayList<>();
+
+    System.out.print("How many emplyoees do you want to enter? ");
+    int count = scanner.nextInt();
+    scanner.nextLine(); 
+
+   
+    for (int i = 0; i < count; i++) {
+      System.out.print("Enter Employee name " + (i + 1) + ": ");
+      String employee = scanner.nextLine();
+      employees.add(employee);
+    }
+
+   
+    Collections.sort(employees, Collections.reverseOrder());
+
+    System.out.println("\nEmployees names in reverse sorted order:");
+    for (String employee : employees) {
+      System.out.println(employee);
+    }
+
+    scanner.close();
+  }
+}
+
+
+6]
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class mapOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        HashMap<String, Integer> map = new HashMap<>();
+
+        while (true) {
+            System.out.println("\n MAP OPERATIONS ");
+            System.out.println("1. Add or Update Entry");
+            System.out.println("2. Remove Entry");
+            System.out.println("3. Check if Key Exists");
+            System.out.println("4. Print All Entries");
+            System.out.println("5. Exit");
+            System.out.print("choose an option ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter key (e.g., name): ");
+                    String key = scanner.nextLine();
+                    System.out.print("Enter value (e.g., score): ");
+                    int value = scanner.nextInt();
+                    map.put(key, value);
+                    System.out.println("Entry added/updated.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter key to remove: ");
+                    String keyToRemove = scanner.nextLine();
+                    if (map.containsKey(keyToRemove)) {
+                        map.remove(keyToRemove);
+                        System.out.println("Entry removed.");
+                    } else {
+                        System.out.println("Key not found.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter key to check: ");
+                    String keyToCheck = scanner.nextLine();
+                    if (map.containsKey(keyToCheck)) {
+                        System.out.println("Key found. Value = " + map.get(keyToCheck));
+                    } else {
+                        System.out.println("Key not found.");
+                    }
+                    break;
+
+                case 4:
+                    if (map.isEmpty()) {
+                        System.out.println("Map is empty.");
+                    } else {
+                        System.out.println("Map entries:");
+                        for (String k : map.keySet()) {
+                            System.out.println(k + " -> " + map.get(k));
+                        }
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting program.");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+
+7]
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class mapException {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter a key (name): ");
+            String key = scanner.nextLine();
+
+            System.out.print("Enter a value (age): ");
+            int value = scanner.nextInt();
+            scanner.nextLine();
+
+            
+            map.put(key, value);
+
+            System.out.print("Enter a key to search: ");
+            String searchKey = scanner.nextLine();
+
+            if (map.containsKey(searchKey)) {
+                System.out.println("Found: " + searchKey + " -> " + map.get(searchKey));
+            } else {
+                System.out.println("Key not found.");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Null values are not allowed!");
+        } catch (ClassCastException e) {
+            System.out.println("Invalid key/value type.");
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        } finally {
+            System.out.println("Final map state: " + map);
+            scanner.close();
+        }
+    }
+}
+
+8]
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class SetOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+   
+        Set<Integer> setA = new HashSet<>();
+        Set<Integer> setB = new HashSet<>();
+
+     
+        System.out.print("Enter number of elements in Set A: ");
+        int n1 = scanner.nextInt();
+        System.out.println("Enter " + n1 + " elements for Set A:");
+        for (int i = 0; i < n1; i++) {
+            setA.add(scanner.nextInt());
+        }
+
+      
+        System.out.print("Enter number of elements in Set B: ");
+        int n2 = scanner.nextInt();
+        System.out.println("Enter " + n2 + " elements for Set B:");
+        for (int i = 0; i < n2; i++) {
+            setB.add(scanner.nextInt());
+        }
+
+
+        Set<Integer> union = new HashSet<>(setA);
+        union.addAll(setB);
+
+  
+        Set<Integer> intersection = new HashSet<>(setA);
+        intersection.retainAll(setB);
+
+    
+        Set<Integer> difference = new HashSet<>(setA);
+        difference.removeAll(setB);
+
+       
+        System.out.println("\nSet A: " + setA);
+        System.out.println("Set B: " + setB);
+        System.out.println("Union: " + union);
+        System.out.println("Intersection: " + intersection);
+        System.out.println("Difference (A - B): " + difference);
+
+        scanner.close();
+    }
+}
+
